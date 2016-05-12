@@ -15,12 +15,12 @@ end
 
 # Install Remi repository
 rpm_package "remi-release-6" do
-    source "/tmp/remi-release-5.rpm"
+    source "/tmp/remi-release-6.rpm"
     action :install
 end
 
 # Install Apache httpd and PHP
-%[
+%w[
     httpd
     php
     php-mbstring
@@ -31,7 +31,6 @@ end
 	options '--enablerepo=remi-php56'
     end
 end
-
 
 # make httpd.conf
 template "httpd.conf" do
