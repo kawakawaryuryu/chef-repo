@@ -44,3 +44,16 @@ template "httpd.conf" do
 	:servername=>node['apache']['servername']
     )
 end
+
+# start apache
+service "httpd" do
+    action [ : enable, :start ]
+end
+
+# place index.php
+cookbook_file "/var/www/html/index.php" do
+    source "index.php"
+    group "root"
+    owner "root"
+    mode "0644"
+end
